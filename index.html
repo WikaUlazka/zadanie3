@@ -1,0 +1,163 @@
+!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularz CSS</title>
+    <style>
+      #element {
+        padding: 20px;
+        margin: 20px;
+        border: 2px solid black;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="styleForm">
+      <fieldset>
+        <legend>Zawartość tekstowa:</legend>
+        <label for="textContent"></label><br />
+        <textarea
+          id="textContent"
+          name="textContent"
+          rows="4"
+          cols="50"
+          placeholder="Wpisz tekst"
+        ></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Styl tekstu:</legend>
+        <label for="textColor">Kolor tekstu:</label><br />
+        <input type="color" id="textColor" name="textColor" /><br />
+
+        <label for="backgroundColor">Kolor tła:</label><br />
+        <input type="color" id="backgroundColor" name="backgroundColor" /><br />
+
+        <label for="fontSize">Rozmiar tekstu:</label><br />
+        <input
+          type="range"
+          id="fontSize"
+          name="fontSize"
+          min="10"
+          max="40"
+          value="16"
+        /><br />
+
+        <label for="fontFamily">Kroju pisma:</label><br />
+        <select id="fontFamily" name="fontFamily">
+          <option value="Arial">Arial</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Courier New">Courier New</option>
+          <option value="Verdana">Verdana</option></select
+        ><br />
+
+        <label
+          ><input type="checkbox" id="fontWeight" name="fontWeight" />
+          Wytłuszczenie</label
+        ><br />
+        <label
+          ><input type="checkbox" id="fontStyle" name="fontStyle" />
+          Pochylenie</label
+        ><br />
+        <label
+          ><input type="checkbox" id="textDecoration" name="textDecoration" />
+          Podkreślenie</label
+        >
+      </fieldset>
+
+      <fieldset>
+        <legend>Styl ramki:</legend>
+        <label for="borderStyle">Rodzaj ramki:</label><br />
+        <input
+          type="radio"
+          id="borderNone"
+          name="borderStyle"
+          value="none"
+          checked
+        />
+        <label for="borderNone">Brak</label>
+        <input type="radio" id="borderSolid" name="borderStyle" value="solid" />
+        <label for="borderSolid">Solidna</label>
+        <input
+          type="radio"
+          id="borderDashed"
+          name="borderStyle"
+          value="dashed"
+        />
+        <label for="borderDashed">Przerywana</label><br />
+
+        <label for="borderColor">Kolor ramki:</label><br />
+        <input type="color" id="borderColor" name="borderColor" /><br />
+
+        <label for="borderWidth">Grubość ramki:</label><br />
+        <input
+          type="range"
+          id="borderWidth"
+          name="borderWidth"
+          min="1"
+          max="5"
+          value="2"
+        />
+      </fieldset>
+
+      <fieldset>
+        <legend>Ułożenie:</legend>
+        <label for="textAlign">Wyrównanie tekstu:</label><br />
+        <select id="textAlign" name="textAlign">
+          <option value="left">Do lewej</option>
+          <option value="center">Do środka</option>
+          <option value="right">Do prawej</option></select
+        ><br />
+
+        <label for="margin">Margines zewnętrzny (px):</label><br />
+        <input
+          type="number"
+          id="margin"
+          name="margin"
+          min="0"
+          max="50"
+          value="20"
+        /><br />
+
+        <label for="padding">Margines wewnętrzny (px):</label><br />
+        <input
+          type="number"
+          id="padding"
+          name="padding"
+          min="0"
+          max="50"
+          value="20"
+        />
+      </fieldset>
+    </form>
+
+    <div id="element">Przykładowy tekst</div>
+
+    <script>
+      const form = document.getElementById('styleForm');
+      const element = document.getElementById('element');
+
+      form.addEventListener('input', () => {
+        element.textContent = form.textContent.value;
+
+        element.style.color = form.textColor.value;
+        element.style.backgroundColor = form.backgroundColor.value;
+        element.style.fontSize = form.fontSize.value + 'px';
+        element.style.fontFamily = form.fontFamily.value;
+        element.style.fontWeight = form.fontWeight.checked ? 'bold' : 'normal';
+        element.style.fontStyle = form.fontStyle.checked ? 'italic' : 'normal';
+        element.style.textDecoration = form.textDecoration.checked
+          ? 'underline'
+          : 'none';
+        element.style.borderStyle = form.borderStyle.value;
+        element.style.borderColor = form.borderColor.value;
+        element.style.borderWidth = form.borderWidth.value + 'px';
+        element.style.textAlign = form.textAlign.value;
+        element.style.margin = form.margin.value + 'px';
+        element.style.padding = form.padding.value + 'px';
+      });
+    </script>
+  </body>
+</html>
